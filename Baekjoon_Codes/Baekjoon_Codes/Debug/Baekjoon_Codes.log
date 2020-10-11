@@ -1,3 +1,8 @@
-﻿  1018.cpp
-C:\Programming\C++\Console_Project\Baekjoon\Baekjoon_Codes\Baekjoon_Codes\1018.cpp(20,22): warning C4805: '==': 연산에 'char' 형식과 'bool' 형식을 함께 사용하는 것은 안전하지 않습니다.
+﻿  1261.cpp
+C:\Programming\C++\Console_Project\Baekjoon\Baekjoon_Codes\Baekjoon_Codes\1261.cpp(47,20): warning C4018: '<': signed 또는 unsigned가 일치하지 않습니다.
+C:\Programming\C++\Console_Project\Baekjoon\Baekjoon_Codes\Baekjoon_Codes\1261.cpp(48,21): warning C4018: '<': signed 또는 unsigned가 일치하지 않습니다.
+C:\Programming\C++\Console_Project\Baekjoon\Baekjoon_Codes\Baekjoon_Codes\1261.cpp(58,20): warning C4018: '<': signed 또는 unsigned가 일치하지 않습니다.
+C:\Programming\C++\Console_Project\Baekjoon\Baekjoon_Codes\Baekjoon_Codes\1261.cpp(60,25): warning C4018: '<': signed 또는 unsigned가 일치하지 않습니다.
+C:\Programming\C++\Console_Project\Baekjoon\Baekjoon_Codes\Baekjoon_Codes\1261.cpp(76,20): warning C4018: '<': signed 또는 unsigned가 일치하지 않습니다.
+C:\Programming\C++\Console_Project\Baekjoon\Baekjoon_Codes\Baekjoon_Codes\1261.cpp(77,21): warning C4018: '<': signed 또는 unsigned가 일치하지 않습니다.
   Baekjoon_Codes.vcxproj -> C:\Programming\C++\Console_Project\Baekjoon\Baekjoon_Codes\Debug\Baekjoon_Codes.exe
