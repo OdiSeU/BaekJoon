@@ -5,20 +5,19 @@ using namespace std;
 
 struct Coord {
 	int row, col;
-	
 };
 
-int n, m, roomNum = 2;
+int n, m, roomNum = 2, tgRoom;
 vector<vector<int>> maze;
 vector<vector<Coord>> rooms;
 
-void DFS(int row, int col, int roomNum) {
+void addRoom(int row, int col, int roomNum) {
 	maze[row][col] = roomNum;
 	rooms[roomNum - 2].push_back({ row, col });
-	if (row - 1 >= 0 && maze[row - 1][col] == 0) DFS(row - 1, col, roomNum);
-	if (row + 1 < m && maze[row + 1][col] == 0) DFS(row + 1, col, roomNum);
-	if (col - 1 >= 0 && maze[row][col - 1] == 0) DFS(row, col - 1, roomNum);
-	if (col + 1 < n && maze[row][col + 1] == 0) DFS(row, col + 1, roomNum);
+	if (row - 1 >= 0 && maze[row - 1][col] == 0) addRoom(row - 1, col, roomNum);
+	if (row + 1 < m && maze[row + 1][col] == 0) addRoom(row + 1, col, roomNum);
+	if (col - 1 >= 0 && maze[row][col - 1] == 0) addRoom(row, col - 1, roomNum);
+	if (col + 1 < n && maze[row][col + 1] == 0) addRoom(row, col + 1, roomNum);
 }
 
 void initMaze() {
@@ -36,7 +35,7 @@ void divideMaze() {
 		for (int c = 0; c < n; c++) {
 			if (maze[r][c] == 0) {
 				rooms.push_back(vector<Coord>());
-				DFS(r, c, roomNum++);
+				addRoom(r, c, roomNum++);
 			}
 		}
 	}
@@ -64,6 +63,26 @@ vector<vector<int>> getWeightMatrix() {
 	return weights;
 }
 
+int getShortestPath(vector<vector<int>> weights, int from, int to) {
+	priority_queue < pair<int, int>, vector<pair<int, int>>, greater<pair<int, int>>> dist;
+	for (int i = 0; i < rooms.size(); i++) {
+		dist.push({weights[i][from],i});
+	}
+	while (!dist.empty()) {
+		pair<int, int> now = dist.top();
+		if (now.second == tgRoom) return now.first;
+		dist.pop();
+		priority_queue<pair<int, int>, vector<pair<int, int>>, greater<pair<int, int>>> temp;
+		while (!dist.empty()) {
+			pair<int, int> next = dist.top();
+			dist.pop();
+			if (now.first + weights[now.second][next.second] < next.first) next.first = now.first + weights[now.second][next.second];
+			temp.push(next);
+		}
+		dist = temp;
+	}
+	return -1;
+}
 
 
 int main() {
@@ -71,13 +90,9 @@ int main() {
 
 	initMaze();
 	divideMaze();
-	vector<vector<int>> weights = getWeightMatrix();
+	tgRoom = maze[m - 1][n - 1] - 2;
+	vector<int> roomDist(rooms.size(), n+m);
+	cout << getShortestPath(getWeightMatrix(), 0, tgRoom);
 
-	for (int i = 0; i < weights.size(); i++) {
-		for (int j = 0; j < weights[i].size(); j++) {
-			cout << weights[i][j] << ' ';
-		}
-		cout << '\n';
-	}
 	return 0;
 }
