@@ -8,7 +8,7 @@ int main() {
 		std::cin >> arr[i];
 		sum += arr[i];
 		cnt++;
-		while (sum > tgNum) {
+		while (sum >= tgNum) {
 			min = min < cnt ? min : cnt;
 			sum -= arr[from++];
 			cnt--;
