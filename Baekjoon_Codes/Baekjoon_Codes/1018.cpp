@@ -10,7 +10,7 @@ int main() {
 	vector<vector<bool>> board(n, vector<bool>(m));
 	vector<vector<int>> changeNum(n, vector<int>(m - 7, 0));
 	vector<int> rowSum(m - 7, 0);
-
+	
 	for (int i = 0; i < n; i++,startState = !startState, cnt = 0) {
 		bool state = startState;
 		for (int j = 0; j < m; j++, state = !state) {

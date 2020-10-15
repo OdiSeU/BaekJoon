@@ -65,23 +65,22 @@ vector<vector<int>> getWeightMatrix() {
 
 int getShortestPath(vector<vector<int>> weights, int from, int to) {
 	priority_queue < pair<int, int>, vector<pair<int, int>>, greater<pair<int, int>>> dist;
-	for (int i = 0; i < rooms.size(); i++) {
-		dist.push({weights[i][from],i});
-	}
+	vector<int> roomDist(rooms.size(), n + m);
+	roomDist[from] = 0;
+	dist.push({ 0, from });
 	while (!dist.empty()) {
-		pair<int, int> now = dist.top();
+		pair<int, int> now = dist.top(); dist.pop();
 		if (now.second == tgRoom) return now.first;
-		dist.pop();
-		priority_queue<pair<int, int>, vector<pair<int, int>>, greater<pair<int, int>>> temp;
-		while (!dist.empty()) {
-			pair<int, int> next = dist.top();
-			dist.pop();
-			if (now.first + weights[now.second][next.second] < next.first) next.first = now.first + weights[now.second][next.second];
-			temp.push(next);
+		if (roomDist[now.second] < now.first) continue;
+		for (int i = 0; i < rooms.size(); i++) {
+			pair<int, int> next = { weights[now.second][i], i };
+			if (now.first + weights[now.second][i] < roomDist[next.second]) {
+				roomDist[next.second] = now.first + weights[now.second][i];
+				dist.push({ now.first + weights[now.second][i], next.second });
+			}
 		}
-		dist = temp;
 	}
-	return -1;
+	return roomDist[to];
 }
 
 
@@ -91,7 +90,6 @@ int main() {
 	initMaze();
 	divideMaze();
 	tgRoom = maze[m - 1][n - 1] - 2;
-	vector<int> roomDist(rooms.size(), n+m);
 	cout << getShortestPath(getWeightMatrix(), 0, tgRoom);
 
 	return 0;
