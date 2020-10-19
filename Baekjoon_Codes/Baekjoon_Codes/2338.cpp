@@ -1,9 +1,11 @@
 #include <iostream>
 #include <string>
+#include <vector>
 using namespace std;
 
 void add(string a, string b) {
-	short c = 0;
+	string c;
+	short cry = 0;
 	for (int i = b.size()-1; i >= 0; i--) {
 		for (int j = a.size() - 1; j >= 0; j--) {
 			
@@ -25,16 +27,13 @@ void print(string num) {
 }
 
 int main() {
-	string a, b, add = "", sub = "", mult = "";
-	getline(cin, a); getline(cin, b);
-	if (a[0] == '-' ^ b[0] == '-') {
-		if (a.size() < b.size()) {
-
-		}
-		else if (a.size() == b.size()) {
-			if(a[0] > b[0])
-		}
+	vector<int>a, b;
+	int input;
+	while (1) {
+		scanf_s("%1d", &input);
+		printf("%d")
 	}
+
 
 	return 0;
 }
