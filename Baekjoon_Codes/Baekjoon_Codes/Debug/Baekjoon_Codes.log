@@ -1,4 +1,4 @@
-﻿  15654.cpp
-C:\Programming\C++\Console_Project\Baekjoon\Baekjoon_Codes\Baekjoon_Codes\15654.cpp(10,21): warning C4018: '<': signed 또는 unsigned가 일치하지 않습니다.
-C:\Programming\C++\Console_Project\Baekjoon\Baekjoon_Codes\Baekjoon_Codes\15654.cpp(16,21): warning C4018: '<': signed 또는 unsigned가 일치하지 않습니다.
+﻿  14492.cpp
+C:\Programming\C++\Console_Project\Baekjoon\Baekjoon_Codes\Baekjoon_Codes\14492.cpp(10,12): warning C4477: 'scanf_s' : 서식 문자열 '%d'에 'int *' 형식의 인수가 필요하지만 variadic 인수 1의 형식이 'bool *'입니다.
+C:\Programming\C++\Console_Project\Baekjoon\Baekjoon_Codes\Baekjoon_Codes\14492.cpp(15,12): warning C4477: 'scanf_s' : 서식 문자열 '%d'에 'int *' 형식의 인수가 필요하지만 variadic 인수 1의 형식이 'bool *'입니다.
   Baekjoon_Codes.vcxproj -> C:\Programming\C++\Console_Project\Baekjoon\Baekjoon_Codes\Debug\Baekjoon_Codes.exe
