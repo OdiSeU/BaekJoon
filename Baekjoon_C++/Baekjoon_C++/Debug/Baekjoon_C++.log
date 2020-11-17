@@ -1,3 +1,5 @@
-﻿  1600.cpp
-C:\Programming\Algorithm\Baekjoon\Baekjoon_C++\Baekjoon_C++\1600.cpp(20,26): warning C4838: 'int'에서 'char'(으)로의 변환에는 축소 변환이 필요합니다.
+﻿  10872.cpp
+C:\Programming\Algorithm\Baekjoon\Baekjoon_C++\Baekjoon_C++\10872.cpp(10,9): warning C4477: 'printf' : 서식 문자열 '%d'에 'int' 형식의 인수가 필요하지만 variadic 인수 1의 형식이 '__int64'입니다.
+C:\Programming\Algorithm\Baekjoon\Baekjoon_C++\Baekjoon_C++\10872.cpp(10,9): message : 서식 문자열에서 '%lld'을(를) 사용하는 것이 좋습니다.
+C:\Programming\Algorithm\Baekjoon\Baekjoon_C++\Baekjoon_C++\10872.cpp(10,9): message : 서식 문자열에서 '%I64d'을(를) 사용하는 것이 좋습니다.
   Baekjoon_C++.vcxproj -> C:\Programming\Algorithm\Baekjoon\Baekjoon_C++\Debug\Baekjoon_C++.exe
