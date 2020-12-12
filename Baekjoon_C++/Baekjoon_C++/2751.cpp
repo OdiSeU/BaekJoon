@@ -16,5 +16,6 @@ int main() {
 		cout << pq.top() << '\n';
 		pq.pop();
 	}
+
 	return 0;
 }
