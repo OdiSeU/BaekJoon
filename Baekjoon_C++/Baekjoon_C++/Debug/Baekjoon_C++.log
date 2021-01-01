@@ -1,2 +1,4 @@
-﻿  1697.cpp
+﻿  1931.cpp
+C:\Programming\Algorithm\Baekjoon\Baekjoon_C++\Baekjoon_C++\1931.cpp(9,16): warning C4101: 'end' :참조되지 않은 지역 변수입니다.
+C:\Programming\Algorithm\Baekjoon\Baekjoon_C++\Baekjoon_C++\1931.cpp(9,9): warning C4101: 'start' :참조되지 않은 지역 변수입니다.
   Baekjoon_C++.vcxproj -> C:\Programming\Algorithm\Baekjoon\Baekjoon_C++\Debug\Baekjoon_C++.exe
