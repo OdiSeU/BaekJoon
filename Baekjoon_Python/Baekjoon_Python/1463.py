@@ -2,8 +2,6 @@ import sys
 import time
 from queue import Queue
 
-import sys
-
 def toOne(n):
     if n < 2: return 0
     return min(toOne(n//2) + n%2, toOne(n//3) + n%3)+1
@@ -43,6 +41,11 @@ sys.stdout.write(str(toOne(int(sys.stdin.readline()))))
 #             visited[now[0] // 3] = 1
 #             que.put([now[0] // 3, now[1] + 1])
 #
+# memo = {0:0,1:0}
+# def toOne4(n):
+#     if n not in memo: memo[n] = min(toOne(n//2) + n%2, toOne(n//3) + n%3)+1
+#     return memo[n]
+#
 #
 # N = int(sys.stdin.readline())
 #
@@ -56,4 +59,8 @@ sys.stdout.write(str(toOne(int(sys.stdin.readline()))))
 #
 # start = time.time()
 # sys.stdout.write(str(toOne3(N))+' ')
+# print(time.time()-start)
+#
+# start = time.time()
+# sys.stdout.write(str(toOne4(N))+' ')
 # print(time.time()-start)
