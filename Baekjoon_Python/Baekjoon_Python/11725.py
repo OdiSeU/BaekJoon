@@ -20,4 +20,3 @@ while q:
             q.append(i)
 
 print(*parent[2:], sep='\n')
-
