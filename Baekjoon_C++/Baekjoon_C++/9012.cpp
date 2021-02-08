@@ -1,31 +1,23 @@
 #include <iostream>
-#include <stack>
 #include <string>
 using namespace std;
 
 int main() {
 	ios_base::sync_with_stdio(0); cin.tie(NULL); cout.tie(NULL);
-	int T;
-	bool isRight;
+	int T, cnt;
 	string s;
 	cin >> T;
 	while (T--) {
-		stack<char> stk;
-		isRight = true;
 		cin >> s;
-		if (s.length() & 1) isRight = false;
+		cnt = 0;
+
+		if (s.length() & 1) cnt = -1;
 		else {
-			for (int i = 0; i < s.length(); i++) {
-				if (s[i] == '(') stk.push('(');
-				else if (stk.empty()) {
-					isRight = false;
-					break;
-				}
-				else stk.pop();
+			for (int i = 0; i < s.length() && cnt >= 0; i++) {
+				s[i] == '(' ? cnt++ : cnt--;
 			}
 		}
-		if (!stk.empty()) isRight = false;
-		cout << (isRight ? "YES" : "NO") << '\n';
+		cout << (cnt ? "NO" : "YES") << '\n';
 	}
 	return 0;
 }
