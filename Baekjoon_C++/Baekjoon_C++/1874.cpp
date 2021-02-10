@@ -7,7 +7,7 @@ class Stack {
 private:
 	int n = 1;
 	stack<int> num;
-	queue<char> hist;
+	string hist = "";
 public:
 	int now() {
 		return n;
@@ -18,17 +18,14 @@ public:
 	}
 	void push() {
 		num.push(n++);
-		hist.push('+');
+		hist += "+\n";
 	};
 	void pop() {
 		num.pop();
-		hist.push('-');
+		hist += "-\n";
 	}
 	void printHist() {
-		while (!hist.empty()) {
-			cout << hist.front() << '\n';
-			hist.pop();
-		}
+		cout << hist;
 	}
 };
 
