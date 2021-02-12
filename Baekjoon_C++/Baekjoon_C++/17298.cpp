@@ -20,7 +20,7 @@ int main(void)
             nge[stk.top().second] = A;
             stk.pop();
         }
-        stk.push({A, i});
+        stk.push({ A, i });
     }
     for (int i = 0; i < N; i++) {
         cout << (nge[i] ? nge[i] : -1) << ' ';
