@@ -1,38 +1,37 @@
 #include <iostream>
 #include <vector>
 #include <deque>
+#define INF 2147483647
 using namespace std;
 
-struct Node { int num; float cost; };
+struct Node { int num, cost; };
 
-bool canGoPast(vector<vector<Node>> tree) {
-	for (int i = 0; i < tree.size(); i++) {
-		vector<float> visited(tree.size(), INFINITY);
-		if (visited[i] != INFINITY) continue;
-		Node now = { i, 0 }, next;
-		deque<Node> q;
-		q.push_back(now);
-		visited[i] = 0;
-		while (!q.empty()) {
-			now = q.front(); q.pop_front();
-			cout << "now : " << now.num << ' ' << now.cost << '\n';
-			for (int j = 0; j < tree[now.num].size(); j++) {
-				next = tree[now.num][j];
-				next.cost += now.cost;
-				cout << "next : " << next.num << ' ' << next.cost << '\n';
-				if (visited[next.num] == INFINITY) {
-					visited[next.num] = next.cost;
-					q.push_front(next);
-				}
-				else if (visited[next.num] > next.cost) return true;
-			}
+bool DFS(vector<vector<Node>>& tree, vector<int>& visited, Node now) {
+	for (int i = 0; i < tree[now.num].size(); i++) {
+		Node next = tree[now.num][i];
+		next.cost += now.cost;
+		if (visited[next.num] == INF) {
+			visited[next.num] = next.cost;
+			if (DFS(tree, visited, next)) return true;
+			visited[next.num] = INF;
 		}
+		else if (visited[next.num] > next.cost) return true;
 	}
+	return false;
+}
+
+bool canGoPast(vector<vector<Node>>& tree) {
+	vector<int> visited(tree.size(), INF);
+	for (int i = 0; i < tree.size(); i++) {
+		visited[i] = 0;
+		if (DFS(tree, visited, { i, 0 })) return true;
+		visited[i] = INF;
+	}
+	return false;
 }
 
 int main() {
-	int TC, N, M, W, S, E;
-	float T;
+	int TC, N, M, W, S, E, T;
 	cin >> TC;
 	while (TC--) {
 		cin >> N >> M >> W;
