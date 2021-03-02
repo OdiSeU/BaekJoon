@@ -1,27 +1,25 @@
 #include <iostream>
-#include <cmath>
+#define MAX 1001
 using namespace std;
+bool seive[MAX] = { 0, };
 
-int isPrime(int n) {
-	int check = 1, m = (int)sqrt(n);
-	if (n == 1) return 0;
-	for (int i = 2; i <= m; i++) {
-		if (n % i == 0) {
-			check = 0;
-			break;
-		}
-	}
-	return check;
+void calcPrime() {
+	seive[0] = 1;
+	seive[1] = 1;
+	for (int i = 2; i * i <= MAX; i++)
+		if (!seive[i])
+			for (int j = i * i; j <= MAX; j += i)
+				seive[j] = 1;
 }
 
 int main() {
-	int N, cnt = 0;
-	scanf_s("%d", &N);
-	while (N--) {
-		int input;
-		scanf_s("%d", &input);
-		cnt += isPrime(input);
+	int N, cnt = 0, num;
+	cin >> N;
+	calcPrime();
+	for(int i = 0; i < N; i++) {
+		cin >> num;
+		cnt += seive[num];
 	}
-	printf("%d", cnt);
+	cout << N - cnt;
 	return 0;
 }
