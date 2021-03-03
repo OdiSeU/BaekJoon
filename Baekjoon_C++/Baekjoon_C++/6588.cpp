@@ -4,12 +4,10 @@ using namespace std;
 bool seive[MAX] = { 0, };
 
 void checkPrime() {
-	seive[0] = 1;
-	seive[1] = 1;
+	seive[0] = seive[1] = 1;
 	for (int i = 2; i * i <= MAX; i++)
 		if (!seive[i])
-			for (int j = i * i; j <= MAX; j += i)
-				seive[j] = 1;
+			for (int j = i * i; j <= MAX; j += i) seive[j] = 1;
 }
 
 int main() {
@@ -19,7 +17,7 @@ int main() {
 	while (1) {
 		cin >> n;
 		if (!n) break;
-		for (int i = 3; i <= n / 2; i+=2) {
+		for (int i = 3; i <= n / 2; i += 2) {
 			if (!seive[i] && !seive[n - i]) {
 				cout << n << " = " << i << " + " << n - i << '\n';
 				break;

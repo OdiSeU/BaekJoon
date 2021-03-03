@@ -1,15 +1,16 @@
 #include <iostream>
-#include <string>
 using namespace std;
 
+void f(int n) {
+	if (n) {
+		f(-(n >> 1));
+		cout << (n & 1);
+	}
+}
+
 int main() {
-	string s = "";
 	int n;
 	cin >> n;
-	if (!n) s = "0";
-	while (n) {
-		s = to_string(n & 1) + s;
-		n = -(n >> 1);
-	}
-	cout << s;
+	if (n) f(n);
+	else cout << '0';
 }
