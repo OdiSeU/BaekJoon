@@ -1,20 +1,19 @@
 #include <iostream>
 #include <vector>
 #include <queue>
-#define INF 10000000000
+#define INF 987654321
 using namespace std;
 
 struct Node {
-	int num;
-	long long cost;
-	bool operator< (const Node& cmp) const{
+	int num, cost;
+	bool operator< (const Node& cmp) const {
 		if (cost == cmp.cost) return num > cmp.num;
 		else return cost > cmp.cost;
 	}
 };
 
-long long dijkstra(vector<vector<Node>>& graph, int from, int to) {
-	vector<long long> dist(graph.size(), INF);
+int dijkstra(vector<vector<Node>>& graph, int from, int to) {
+	vector<int> dist(graph.size(), INF);
 	priority_queue<Node> pq;
 	dist[from] = 0;
 	pq.push({ from, 0 });
