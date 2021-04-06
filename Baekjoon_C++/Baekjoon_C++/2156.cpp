@@ -5,15 +5,14 @@ int max(int a, int b) { return a > b ? a : b; }
 
 int main() {
 	ios_base::sync_with_stdio(0); cin.tie(NULL); cout.tie(NULL);
-	int n, i = 1, dp[3][2]{ 0, }, seq[3] = { 0, }, bbf, bf, now;
+	int dp[3] = { 0, }, seq[3] = { 0, };
+	int n, i = 1, bf = 0, now = 1, bbf = 2, tmp;
 	cin >> n >> seq[i];
-	dp[i][0] = seq[i];
+	dp[i] = seq[i];
 	while (++i<=n) {
-		bbf = (i - 2) % 3; bf = (i - 1) % 3; now = i % 3;
+		tmp = bbf; bbf = bf; bf = now; now = tmp;
 		cin >> seq[now];
-		dp[now][0] = max(dp[bbf][0], dp[bbf][1] + seq[bf]) + seq[now];
-		dp[now][1] = max(dp[bf][0], dp[bf][1]);
+		dp[now] = max(max(dp[bbf], dp[now] + seq[bf]) + seq[now], dp[bf]);
 	}
-	i--;
-	cout << max(dp[i % 3][0], dp[i % 3][1]);
+	cout << dp[now];
 }
