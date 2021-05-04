@@ -1,46 +1,34 @@
 #include <iostream>
 #include <string>
+#include <cmath>
+#include <algorithm>
 using namespace std;
 bool btns[10] = { 0, };
-int N, len;
+int minClick, len, channel;
 
-int getNextNum(int i) {
-	while (i < 10) {
-		if (!btns[i]) break;
-		i++;
-	}
-	return i > 9 ? -1 : i;
+int getClickCnt(int n) {
+	return abs(channel - n) + to_string(n).length();
 }
 
-int getBeforeNum(int i) {
-	while (i >= 0) {
-		if (!btns[i]) break;
-		i--;
+void bruteForce(int now) {
+	if (to_string(now).length() > len + 1) return;
+	minClick = min(getClickCnt(now), minClick);
+	for (int i = 0; i < 10; i++) {
+		if (!btns[i]) bruteForce(now * 10 + i);
 	}
-	return i < 0 ? -1 : i;
-}
-
-string initBig() {
-	string big;
-	if (getNextNum(1) >= 0) {
-		big.push_back(getNextNum(1) + '0');
-		for (int i = 0; i < len; i++) {
-			big.push_back(getNextNum(0) + '0');
-		}
-	}
-	else big = "1234567";
-	return big;
 }
 
 int main() {
-	int x;
-	string channel, small = "0", big;
-	cin >> channel >> N;
-	while (N--) {
+	ios_base::sync_with_stdio(0); cin.tie(NULL); cout.tie(NULL);
+	int x, M, small, big;
+	cin >> channel >> M;
+	len = to_string(channel).length();
+	minClick = abs(channel - 100);
+	while (M--) {
 		cin >> x;
 		btns[x] = 1;
 	}
-	N = stoi(channel); len = channel.length();
-	big = initBig();
-	cout << big;
+	if (!btns[0]) minClick = min(channel + 1, minClick);
+	for (int i = 1; i < 10; i++) if (!btns[i]) bruteForce(i);
+	cout << minClick;
 }
