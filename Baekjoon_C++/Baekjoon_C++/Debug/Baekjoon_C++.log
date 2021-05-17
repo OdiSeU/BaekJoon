@@ -1,5 +1,2 @@
-﻿  1107.cpp
-C:\Programming\Algorithm\Baekjoon\Baekjoon_C++\Baekjoon_C++\1107.cpp(14,30): warning C4018: '>': signed 또는 unsigned가 일치하지 않습니다.
-C:\Programming\Algorithm\Baekjoon\Baekjoon_C++\Baekjoon_C++\1107.cpp(23,12): warning C4101: 'small' :참조되지 않은 지역 변수입니다.
-C:\Programming\Algorithm\Baekjoon\Baekjoon_C++\Baekjoon_C++\1107.cpp(23,19): warning C4101: 'big' :참조되지 않은 지역 변수입니다.
+﻿  14500.cpp
   Baekjoon_C++.vcxproj -> C:\Programming\Algorithm\Baekjoon\Baekjoon_C++\Debug\Baekjoon_C++.exe
