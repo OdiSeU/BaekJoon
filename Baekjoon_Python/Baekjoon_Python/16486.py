@@ -1,0 +1,1 @@
+print(2*int(input())+6.283184*int(input()))
