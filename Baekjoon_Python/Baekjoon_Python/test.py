@@ -1,19 +1,13 @@
-h, m, s = map(int, input().split())
-t = int(input())
+from bisect import bisect_left, bisect_right
 
-s += (t % 60)
-m += ((t % 3600) // 60)
-h += t // 3600
+N, M = map(int, input().split())
 
-if s >= 60:
-    m += 1
-    s -= 60
+trees = sorted(list(map(int, input().split())))
 
-if m >= 60:
-    h += 1
-    m -= 60
+def z(x):
+    sum = 0
+    for i in range(bisect_left(trees, x), N):
+        sum += max(trees[i]-x, 0)
+    return sum
 
-if h >= 24:
-    h %= 24
-
-print('{} {} {}'.format(h, m, s))
+print(bisect_right(trees, M, key= z))
