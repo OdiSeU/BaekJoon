@@ -1,6 +1,5 @@
 import sys
 
-
 words = list(map(str.strip, sys.stdin.readlines()))
 answer = []
 
