@@ -1,4 +1,4 @@
-let input = require('fs').readFileSync('/dev/stdin.txt').toString().trim();
+let input = require('fs').readFileSync('/dev/stdin').toString().trim();
 
 const times = input.split('\r\n')[1].trim().split(' ').map(v=>+v);
 
