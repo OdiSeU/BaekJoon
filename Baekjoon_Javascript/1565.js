@@ -14,16 +14,12 @@ const solution = (arrD, arrM) => {
     if(gcdM % lcmD) return 0;
 
     const num = gcdM / lcmD;
-    let answer = 0;
+    let i, answer = 0;
     
-    for(let i = 1n; i * i <= num; i++) {
-        if(num % i === 0n) {
-            answer++;
-            if(i * i < num) {
-                answer++;
-            }
-        }
+    for(i = 1n; i * i < num; i++) {
+        if(num % i === 0n) answer+=2;
     }
+    if(i * i === num) answer++;
 
     return answer;
 }
